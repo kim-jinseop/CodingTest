@@ -1,10 +1,10 @@
 import sys
 
-n = list(sys.stdin.readline().strip())
+n = sys.stdin.readline().strip()
 
-arr = []
+result = set()
 for i in range(len(n)) :
     for j in range(i,len(n)) :
-        arr.append(''.join(n[i:j+1]))
+        result.add(n[i:j+1])
 
-print(len(set(arr)))
+print(len(result))
