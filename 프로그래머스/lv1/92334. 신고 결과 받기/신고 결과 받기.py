@@ -1,26 +1,13 @@
 def solution(id_list, report, k):
-    r_report = {}
-    t_report = {}
-    stop_id = []
     result = [0] * len(id_list)
+    r_report = {x : 0 for x in id_list}
+    set_report = set(report)
     
-    for i in id_list :
-        r_report[i] = 0
-        t_report[i] = []
-        
-    for i in report :
-        a,b = i.split()
-        
-        if (b in t_report[a]) == False :
-            r_report[b] += 1
-            t_report[a].append(b)
-        
-            if r_report[b] == k :
-                stop_id.append(b)
-            
-    for i in range(len(id_list)) :
-        for j in stop_id :
-            if j in t_report[id_list[i]] :
-                result[i] += 1
-        
+    for i in set_report :
+        r_report[i.split()[1]] += 1
+    
+    for i in set_report :
+        if r_report[i.split()[1]] >= k :
+            result[id_list.index(i.split()[0])] += 1
+    
     return result
