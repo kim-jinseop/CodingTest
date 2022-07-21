@@ -1,5 +1,3 @@
 def solution(a, b):
-    Sum = 0
-    for i in range(len(a)) :
-        Sum += a[i] * b[i]
-    return Sum
+
+    return sum([i*j for i,j in zip(a,b)])
