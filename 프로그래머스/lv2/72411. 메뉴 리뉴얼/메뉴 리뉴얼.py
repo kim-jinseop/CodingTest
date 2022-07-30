@@ -1,27 +1,16 @@
 from itertools import combinations
+from collections import Counter
 
 def solution(orders, course):
     answer = []
     for c in course :
-        tbox = {}
-        sbox = set()
-        
-        for i in orders :
-            if len(i) >= c :
-                sbox.update(list(combinations(sorted(i), c)))
-        cou = sorted(sbox)
-
-        for i in cou :
-            tbox[''.join(i)] = 0 
-            for j in orders :
-                if set(i).issubset(set(j)) :
-                    tbox[''.join(i)] += 1
-        
-        if tbox :
-            Max = max(tbox.values())
-        
-        for key,value in tbox.items() :
-            if Max == value and Max > 1:
-                answer.append(key)
-                    
+        all_combi = []
+        for order in orders :
+            all_combi += list(combinations(sorted(order),c))
+            
+        box = Counter(all_combi).most_common()
+        for key,value in box :
+            if value == Counter(all_combi).most_common(1)[0][1] and value > 1:
+                answer.append(''.join(key))
+            
     return sorted(answer)
