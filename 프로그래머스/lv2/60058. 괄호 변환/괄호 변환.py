@@ -26,18 +26,7 @@ def func(p) :
             break
 
     if chk != '':
-        print('f')
-        new += '('
-        new += func(v)
-        new += ')'
-        u = u[1:-1]
-        print(u)
-        u = u.replace('(','C')
-        u = u.replace(')','(')
-        u = u.replace('C',')')
-        print(u)
-        new += u
-        return new
+        return '(' + func(v) + ')' + ''.join(['(' if x==')' else ')' for x in u[1:-1]])
     else :
         return u + func(v)
 
