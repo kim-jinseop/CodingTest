@@ -1,4 +1,4 @@
-import math
+import math #확인 
 t = int(input())
 
 for _ in range(t) :
