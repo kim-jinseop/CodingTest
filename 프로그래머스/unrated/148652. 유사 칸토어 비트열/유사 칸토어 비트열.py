@@ -10,11 +10,10 @@ def solution(n, l, r):
             return bit[:x].count('1')
     
         cnt = 1 
-        while 5**(cnt+1) < x :
+        while x//(5**(cnt+1)) :
             cnt += 1 
             
         share, remainder = divmod(x, 5**cnt)
-        
         answer = share * (4**cnt)
         
         if share >= 3 :
