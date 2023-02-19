@@ -4,25 +4,25 @@
 # 4 => 5^3 => 16/16/0/16/16 -> 1의 개수 4^3
 
 bit = '11011'
+
 def solution(n, l, r):
-    def func(x) :
-        if x <= 5 : 
-            return bit[:x].count('1')
-    
-        cnt = 1 
-        while x//(5**(cnt+1)) :
-            cnt += 1 
-            
-        share, remainder = divmod(x, 5**cnt)
-        answer = share * (4**cnt)
-        
-        if share >= 3 :
-            answer -= 4**cnt
-            
-        if share == 2:
-            return answer
-        else:
-            return answer + func(remainder)
+    return func(r) - func(l-1) # [0:r] - [0:l] = [r:l]
 
-    return func(r) - func(l-1) 
+def func(x) :
+    if x <= 5 : 
+        return bit[:x].count('1')
 
+    cnt = 1
+    while x//(5**(cnt+1)) :
+        cnt += 1 
+
+    share, remainder = divmod(x, 5**cnt)
+    answer = share * (4**cnt)
+
+    if share >= 3 :
+        answer -= 4**cnt
+
+    if share == 2:
+        return answer
+    else:
+        return answer + func(remainder)
