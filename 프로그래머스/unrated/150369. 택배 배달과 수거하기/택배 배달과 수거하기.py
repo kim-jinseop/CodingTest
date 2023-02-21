@@ -1,17 +1,17 @@
 def solution(cap, n, deliveries, pickups):
     answer = 0
-    d = 0
-    p = 0
+    give = 0 
+    get = 0
 
     for i in range(n-1,-1,-1) :
-        d -= deliveries[i]
-        p -= pickups[i]
+        give -= deliveries[i]
+        get -= pickups[i]
         
         cp = 0
         
-        while d<0 or p<0 :
-            d += cap
-            p += cap
+        while give<0 or get<0 :
+            give += cap
+            get += cap
             cp += 1
         
         answer += (i+1) * 2 * cp 
