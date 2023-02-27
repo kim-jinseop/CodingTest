@@ -36,7 +36,6 @@ while True :
     for i in range(N) :
         for j in range(N) :
             if visit[i][j] == 0 :
-                visit[i][j] = 1
                 union = []
                 total = 0
 
