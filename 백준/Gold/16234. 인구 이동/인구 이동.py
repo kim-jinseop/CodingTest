@@ -22,6 +22,7 @@ def bfs(x,y) :
         x,y = q.popleft()
         union.append((x,y))
         total += arr[y][x]
+        visit[y][x] = 1
 
         for i in range(4) :
             px = dx[i] + x
@@ -30,7 +31,7 @@ def bfs(x,y) :
             if 0<=px<N and 0<=py<N and visit[py][px]==0 and L<=abs(arr[y][x] - arr[py][px])<=R:
                 q.append((px,py))
                 visit[py][px] = 1
-
+               
 while True :
     for i in range(N) :
         for j in range(N) :
