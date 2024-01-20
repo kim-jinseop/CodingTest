@@ -1,18 +1,16 @@
-import math #확인 
-t = int(input())
+def is_inside(x, y, cx, cy, r):
+    return (x - cx)**2 + (y - cy)**2 < r**2
 
-for _ in range(t) :
-    x1,y1,x2,y2 = map(int,input().split())
+# 입력 처리
+T = int(input())
+for _ in range(T):
+    x1, y1, x2, y2 = map(int, input().split())
     n = int(input())
     count = 0
-    
-    for i in range(n) :
-        cx,cy,r = map(int,input().split())
-        
-        start_distance = math.sqrt((x1-cx)**2 + (y1-cy)**2)
-        end_distance = math.sqrt((x2-cx)**2 + (y2-cy)**2)
-        
-        if (r < start_distance and r > end_distance) or (r > start_distance and r < end_distance) :                        
-            count += 1 
-            
+
+    for _ in range(n):
+        cx, cy, r = map(int, input().split())
+        if is_inside(x1, y1, cx, cy, r) != is_inside(x2, y2, cx, cy, r):
+            count += 1
+
     print(count)
