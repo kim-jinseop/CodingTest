@@ -1,15 +1,8 @@
-import sys
+# 입력 받기
+x, y, w, h = map(int, input().split())
 
-x,y,w,h = map(int,sys.stdin.readline().strip().split())
+# 네 방향 중 최소 거리 계산
+min_distance = min(x, y, w - x, h - y)
 
-if x < (w-x) :
-    min_x = x
-else :
-    min_x = (w-x)
-    
-if y < (h-y) :
-    min_y = y
-else :
-    min_y = (h-y)
-    
-print(min(min_x,min_y))   
+# 결과 출력
+print(min_distance)
