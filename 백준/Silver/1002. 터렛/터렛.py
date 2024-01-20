@@ -1,17 +1,19 @@
 import math
-t = int(input())
 
+def calculate_positions(x1, y1, r1, x2, y2, r2):
+    distance = math.sqrt((x1 - x2) ** 2 + (y1 - y2) ** 2)
+    
+    if distance == 0 and r1 == r2:
+        return -1  # 두 원이 일치
+    elif distance > r1 + r2 or distance < abs(r1 - r2):
+        return 0  # 두 원이 만나지 않음
+    elif distance == r1 + r2 or distance == abs(r1 - r2):
+        return 1  # 한 점에서 만남
+    else:
+        return 2  # 두 점에서 만남
 
-for i in range(t) :
-    x1,y1,r1,x2,y2,r2 = map(int,input().split())
-
-    r12 = math.sqrt((x1-x2)**2 + (y1-y2)**2)
-
-    if x1==x2 and y1==y2 and r1 == r2 :
-        print(-1)
-    elif r12==r1+r2 or r12==abs(r1-r2)  :
-        print(1)
-    elif abs(r1-r2)<r12 and r12<r1+r2 :
-        print(2)
-    else : 
-        print(0)
+# 입력 처리
+T = int(input())
+for _ in range(T):
+    x1, y1, r1, x2, y2, r2 = map(int, input().split())
+    print(calculate_positions(x1, y1, r1, x2, y2, r2))
